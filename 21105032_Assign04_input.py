@@ -161,43 +161,37 @@ del employee_3
 #Answer 6
 print("Ans 6")
 
-# inputting a word from the first friend
-word = input("Enter the first word: ")
-
-# inputting a meaningful word with the exact same letters
-testword = input("\nEnter a new meaningful word to test your friendship: ")
-
-
-# defining dictionary from last assignment
-def count_in_dict(word):
-    count = {}
-    list1 = list(word)
-
-    n = len(list1)
-    for i in range(n):
-        if list1[i] in count:
-            count[list1[i]] += 1
-        else:
-            count[list1[i]] = 1
-    return count
-
-
-# test to verify the letters of the new word
-if count_in_dict(word) != count_in_dict(testword):
-    print("The letters aren't exact, friendship is fake!!")
-
-
-# shopkeeper's input to verify the word's meaning
-def userinput():
-    ans = input("\n{For the Shopkeeper}\nDoes the word makes sense?(y or n)\n").lower()
-
-    if ans == 'y':
-        print("The friends pass the friendship test!!\n\n")
-    elif ans == 'n':
-        print("The word doesn't have a meaning, friendship is fake!!\n\n")
+# definig principle of game
+def samesense(word1,word2):
+    #converting all letters to lowercase
+    word1=word1.lower()
+    word2=word2.lower()
+    #form empty list to store letters of words
+    l1=[]
+    l2=[]
+    for e in word1:
+        l1.append(e)
+    for el in word2:
+        l2.append(el)
+    #sorting the list alphabetically
+    l1.sort()
+    l2.sort()
+    if l1==l2:
+        return True
     else:
-        print("Invalid input, try again")
-        userinput()
+        return False
 
-
-userinput()
+#taking player name input
+player1="George"
+player2="Barbie"
+#taking words spoken by written
+word_player1=str(input(f"\nEnter Word by George:"))
+word_player2=str(input(f"Enter Word by Barbie:"))
+#using samesense function
+result=samesense(word_player1,word_player2)
+#printing the final result
+if result==True:
+    print(f"\nFriendship of Barbie and George is REAL")
+elif result==False:
+    print(f"\nFriendship of Barbie and George is FAKE")
+    
